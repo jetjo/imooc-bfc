@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BFC其他作用</title>
+        <style>
+            p {
+                margin: 0;
+                padding: 0;
+            }
+
+            p {
+                width: 200px;
+                height: 200px;
+                background-color: orange;
+                margin: 50px;
+            }
+
+            .bfc {
+                overflow: hidden;
+            }
+
+            .bfc>p {
+                background-color: green;
+            }
+
+            .s1 {
+                float: left;
+                width: 300px;
+                height: 300px;
+                background-color: red;
+            }
+
+            .s2 {
+                /* 不规范，并排元素浮动时都要设置浮动 */
+                /* float: left; */
+                width: 200px;
+                height: 200px;
+                background-color: blue;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <!-- 1、取消盒子margin塌陷 -->
+        <p></p>
+        <p></p>
+        <div>
+            <p></p>
+        </div>
+        <div>
+            <p></p>
+        </div>
+
+        <p class="bfc"></p>
+        <p class="bfc"></p>
+        <div class="bfc">
+            <p></p>
+        </div>
+        <div class="bfc">
+            <p></p>
+        </div>
+
+        <!-- 2、阻止元素被浮动元素覆盖 -->
+        <section class="s s1"></section>
+        <section class="s s2 bfc"></section>
+    </body>
+
+</html>

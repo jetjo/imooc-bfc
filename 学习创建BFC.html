@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>学习BFC规范</title>
+        <title>学习创建BFC</title>
         <style>
             .box {
                 width: 400px;
@@ -19,6 +19,8 @@
                 /* 设置为hidden、overlay或scroll以形成BFC */
                 /* overflow: hidden;指的是溢出边框的内容隐藏，内容可以溢出到padding区 */
                 overflow: hidden;
+                /* 设置zoom形成BFC，但只适用于IE */
+                /* zoom: 1; */
             }
 
             .box .c {
