@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>学习清除浮动</title>
+        <style>
+            body,
+            p {
+                margin: 0;
+                padding: 0;
+            }
+
+            p {
+                float: left;
+                width: 200px;
+                height: 200px;
+                background-color: orange;
+                margin-right: 20px;
+            }
+
+            .bfc-only {
+                overflow: hidden;
+            }
+
+            /* 方法1：形成BFC */
+            .clearfix-1 {
+                overflow: hidden;
+                /* 形成BFC，height不为0，垂直margin有效，但是还会塌陷 */
+                margin: 10px 0;
+            }
+
+        </style>
+    </head>
+
+    <body>
+
+        <div class="clearfix-1">
+            <p></p>
+            <p></p>
+        </div>
+        <div class="clearfix-1">
+            <p></p>
+            <p></p>
+        </div>
+
+        <!-- 包裹一层BFC清除塌陷 -->
+        <div class="bfc-only">
+            <div class="clearfix-1">
+                <p></p>
+                <p></p>
+            </div>
+        </div>
+
+        <!-- <div class="bfc-only"> -->
+        <div class="clearfix-1">
+            <p></p>
+            <p></p>
+        </div>
+        <!-- </div> -->
+
+        <div>浮动一定要封闭在一个盒子内部，否则会对后续元素产生影响</div>
+
+    </body>
+
+</html>

@@ -7,6 +7,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>BFC其他作用</title>
         <style>
+            body {
+                color: white;
+                margin: 0;
+                padding: 0;
+            }
+
             p {
                 margin: 0;
                 padding: 0;
@@ -49,20 +55,23 @@
         <!-- 1、取消盒子margin塌陷 -->
         <p></p>
         <p></p>
-        <div>
-            <p></p>
+        <div style="margin: 60px; background: red; color: cyan;">
+            <p>
+                垂直方向上，父子元素的margin，并没有产生叠加影响（水平方向有），子元素的margin不会成为父元素margin值的一部分，当父元素margin小于子元素margin时，父元素margin在视觉上没效果，
+                当父元素margin大于子元素margin时，子元素margin视觉上没效果
+            </p>
         </div>
         <div>
             <p></p>
         </div>
 
-        <p class="bfc"></p>
-        <p class="bfc"></p>
+        <p class="bfc">形成了BFC，但仍然塌陷了，说明BFC不能阻止自身的margin塌陷</p>
+        <p class="bfc">形成了BFC，但仍然塌陷了，说明BFC不能阻止自身的margin塌陷</p>
         <div class="bfc">
-            <p></p>
+            <p>BFC取消盒子margin塌陷的本质：形成BFC后，子元素的margin尺寸才会被视为其内容区的一部分，也就是子元素的margin才不会处于父盒子的边框外</p>
         </div>
         <div class="bfc">
-            <p></p>
+            <p>BFC取消盒子margin塌陷的本质：形成BFC后，子元素的margin尺寸才会被视为其内容区的一部分，也就是子元素的margin才不会处于父盒子的边框外</p>
         </div>
 
         <!-- 2、阻止元素被浮动元素覆盖 -->
