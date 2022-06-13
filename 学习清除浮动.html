@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>学习清除浮动</title>
+        <title>学习清除浮动 🌟</title>
         <style>
             body,
             p {
@@ -14,7 +14,7 @@
             }
 
             p {
-                float: left;
+                /* float: left; */
                 width: 200px;
                 height: 160px;
                 background-color: orange;
@@ -128,80 +128,92 @@
             }
 
         </style>
+
+        <style>
+            .test-zero-width {
+                /* 假设临界值为w，大于w时，盒子内的浮动元素并排空间横向尺寸足够；小于w时，尺寸不足，排在后面的元素挤到下一层 */
+                width: 0 !important;
+            }
+
+            .float {
+                float: left;
+            }
+
+        </style>
     </head>
 
     <body>
-        <div class="set-height" style="height: 320px;">
-            <p style="height: auto;">set-height
-                <span style="font-size: 2rem;">父盒子的下边界要位于我的下边界之下时，才不会被父盒子后的兄弟盒子的内容贴靠</span>
+        <div class="set-height test-zero-width" style="height: 320px;">
+            <p class="float" style="height: auto;">set-height
+                <span style="font-size: 2rem;">现象A：父盒子的下边界要位于我的下边界之下时，才不会被父盒子后的兄弟盒子的内容贴靠</span>
             </p>
-            <p>set-height
-                <span>父盒子的下边界要位于我的下边界之下时，才不会被父盒子后的兄弟盒子的内容贴靠</span>
+            <p class="float">set-height
+                <span>现象A的原因：父盒子的后续兄弟盒子与父盒子的内容重叠在了一起，并且两个盒子的内容又都是浮动的，不会重叠</span>
             </p>
         </div>
-        <div class="set-height" style="height: 10px;">
-            <p>set-height</p>
-            <p>set-height</p>
+        <div class="set-height test-zero-width" style="height: 10px;">
+            <p class="float">set-height</p>
+            <p class="float">set-height</p>
         </div>
 
         <div class="clearfix-1 h-min">
-            <p>clearfix
-                <span>形成BFC只能消除自己对外界的影响，不能防止外界影响自己；由于之前的div高度不够，被迫贴靠！可以设置clear both消除影响</span>
+            <p class="float">clearfix
+                <span>浮动的元素会尽量先贴靠在其父盒子的之前的兄弟盒子的最后的子元素之后，如果父盒子的内容区的上边界位于其之前兄弟盒子最后一个子元素的上边界之上并且水平空间足够的话；否则排挤到下面尽量靠上位置。</span>
             </p>
-            <p>clearfix
+            <p class="float">clearfix
                 <span>形成BFC只能消除自己对外界的影响，不能防止外界影响自己；由于之前的div高度不够，被迫贴靠！可以设置clear both消除影响</span>
             </p>
         </div>
         <div class="clearfix-1">
-            <p>clearfix</p>
-            <p>clearfix</p>
+            <p class="float">clearfix</p>
+            <p class="float">clearfix</p>
         </div>
 
         <!-- 包裹一层BFC清除塌陷 -->
         <div class="bfc-only">
             <div class="clearfix-1">
-                <p>clearfix</p>
-                <p>clearfix</p>
+                <p class="float">clearfix</p>
+                <p class="float">clearfix</p>
             </div>
         </div>
 
         <div class="bfc-only">
             <div class="clearfix-1">
-                <p>clearfix</p>
-                <p>clearfix</p>
+                <p class="float">clearfix</p>
+                <p class="float">clearfix</p>
             </div>
         </div>
 
         <div class="clearfix-" style="margin-bottom: 10px;">
-            <p>clearfix</p>
-            <p>clearfix</p>
+            <p class="float">clearfix</p>
+            <p class="float">clearfix</p>
         </div>
         <div class="clearfix-2">
-            <p>clearfix
+            <p class="float">clearfix
                 <span>父盒子的上外边距是有的，只是父盒子的前一个兄弟盒子的下边界距离父盒子的上边界的距离是200px(其子元素p的垂直尺寸200px,其虽然有margin-bottom，但是因为margin塌陷，且较小，所以不参与计算)，大于父盒子的margin-top(110px)，所以看不出效果！</span>
             </p>
-            <p>clearfix
+            <p class="float">clearfix
                 <span>父盒子的上外边距是有的，只是父盒子的前一个兄弟盒子的下边界距离父盒子的上边界的距离是200px(其子元素p的垂直尺寸200px,其虽然有margin-bottom，但是因为margin塌陷，且较小，所以不参与计算)，大于父盒子的margin-top(110px)，所以看不出效果！</span>
             </p>
         </div>
 
         <div class="clearfix-3">
-            <p>clearfix</p>
-            <p>clearfix</p>
+            <p class="float">clearfix</p>
+            <p class="float">clearfix</p>
         </div>
         <div class="clearfix-3">
-            <p>clearfix</p>
-            <p>clearfix</p>
+            <p class="float">clearfix</p>
+            <p class="float">clearfix</p>
         </div>
 
         <div>
-            <p>clearfix</p>
-            <p>clearfix</p>
+            <p class="float">clearfix</p>
+            <p class="float">clearfix</p>
         </div>
         <div class="cl h20"></div>
         <div>
-            <p>clearfix</p>
-            <p>clearfix</p>
+            <p class="float">clearfix</p>
+            <p class="float">clearfix</p>
         </div>
         <div>浮动一定要封闭在一个盒子内部，否则会对后续元素产生影响</div>
 

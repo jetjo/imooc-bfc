@@ -1,0 +1,14 @@
+/* 就近原则：按书写顺序，越后面书写的权限越高，与类名在class属性中出现的顺序无关 */
+/* 就近原则：与内联style相比，书写顺序即是引入的顺序 */
+.m-0-a {
+    margin: 0 auto;
+}
+
+.float {
+    float: left;
+}
+
+.inline-center-hv_h50_ {
+    text-align: center;
+    line-height: var(--h50);
+}
