@@ -1,14 +1,43 @@
 /* 就近原则：按书写顺序，越后面书写的权限越高，与类名在class属性中出现的顺序无关 */
 /* 就近原则：与内联style相比，书写顺序即是引入的顺序 */
-.m-0-a {
+.block-horizontal-center {
+    display: block;
+    position: static;
     margin: 0 auto;
+}
+
+/* 行内元素和行内快元素不会在水平方向充满父盒子，可以使用text-align:center属性实现在父盒子中水平居中 */
+.inline_content--horizontal_center {
+    /* text-align-last: justify; */
+    text-align: center;
 }
 
 .float {
     float: left;
 }
 
-.inline-center-hv_h50_ {
+.single_line_content--center_center {
     text-align: center;
     line-height: var(--h50);
+}
+
+.pos-fixed {
+    position: fixed;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.view_port--horizontal_center {
+    position: fixed;
+    /* margin: 10px 50% 0; */
+    left: 50%;
+    /* width: var(--w600); */
+    margin-left: calc(var(--w800) * -.5);
+}
+
+.clearfix {
+    /* clear: all; */
+    clear: both;
 }
